@@ -1,3 +1,5 @@
+from re import search
+from sqlite3 import adapt
 from django.db import models
 from autoslug import AutoSlugField
 from blog.models import KategoriModel
@@ -21,3 +23,6 @@ class YazilarModel(models.Model):
 
     def __str__(self):
         return self.baslik
+
+
+
