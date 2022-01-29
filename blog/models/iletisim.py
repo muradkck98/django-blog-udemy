@@ -1,6 +1,7 @@
-import email
+import email 
 from tabnanny import verbose
 from django.db import models
+from django.contrib.auth.models import User
 
 class IletisimModel(models.Model):
     email = models.EmailField(max_length = 250)

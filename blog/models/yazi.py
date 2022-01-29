@@ -1,9 +1,6 @@
-from re import search
-from sqlite3 import adapt
 from django.db import models
 from autoslug import AutoSlugField
 from blog.models import KategoriModel
-from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
 class YazilarModel(models.Model):
@@ -14,7 +11,7 @@ class YazilarModel(models.Model):
     duzenleme_tarihi = models.DateTimeField(auto_now=True) 
     slug = AutoSlugField(populate_from = 'baslik',unique=True) #yazıların slug ı
     Kategoriler = models.ManyToManyField(KategoriModel, related_name='yazi') #bir yazı birden fazla kategori ile eslesebilir
-    yazar = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'yazilar') 
+    yazar = models.ForeignKey('account.CustomUserModel', on_delete=models.CASCADE, related_name = 'yazilar') 
 
     class Meta:
         verbose_name = 'Yazi'
